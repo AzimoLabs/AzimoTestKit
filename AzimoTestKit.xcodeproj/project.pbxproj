@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		616A0F511E9B9876007E977D /* AzimoTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616A0F471E9B9875007E977D /* AzimoTestKit.framework */; };
 		616A0F641E9B989B007E977D /* AzimoTestKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 616A0F621E9B989B007E977D /* AzimoTestKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		616A0F731E9BA3A9007E977D /* FakeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616A0F721E9BA3A9007E977D /* FakeObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		616A0F571E9B9876007E977D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		616A0F621E9B989B007E977D /* AzimoTestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzimoTestKit.h; sourceTree = "<group>"; };
 		616A0F631E9B989B007E977D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		616A0F721E9BA3A9007E977D /* FakeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 		616A0F491E9B9875007E977D /* AzimoTestKit */ = {
 			isa = PBXGroup;
 			children = (
+				616A0F711E9BA3A9007E977D /* Classes */,
 				616A0F611E9B989B007E977D /* SupportingFiles */,
 			);
 			path = AzimoTestKit;
@@ -89,6 +92,14 @@
 				616A0F631E9B989B007E977D /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		616A0F711E9BA3A9007E977D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				616A0F721E9BA3A9007E977D /* FakeObject.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				616A0F731E9BA3A9007E977D /* FakeObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +380,7 @@
 		616A0F5F1E9B9876007E977D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 48EJ9CKA37;
 				INFOPLIST_FILE = AzimoTestKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -380,6 +393,7 @@
 		616A0F601E9B9876007E977D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 48EJ9CKA37;
 				INFOPLIST_FILE = AzimoTestKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

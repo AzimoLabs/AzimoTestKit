@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		616A0F511E9B9876007E977D /* AzimoTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616A0F471E9B9875007E977D /* AzimoTestKit.framework */; };
 		616A0F641E9B989B007E977D /* AzimoTestKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 616A0F621E9B989B007E977D /* AzimoTestKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		616A0F651E9B989B007E977D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 616A0F631E9B989B007E977D /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +186,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				616A0F651E9B989B007E977D /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

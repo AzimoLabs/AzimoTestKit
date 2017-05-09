@@ -120,12 +120,12 @@ extension FakeObject {
     }
 }
 
-func Verify<T: FakeObject>(_ object: T, _ method: T.MethodType, count: UInt = 1, file: StaticString = #file, line: UInt = #line) {
+public func Verify<T: FakeObject>(_ object: T, _ method: T.MethodType, count: UInt = 1, file: StaticString = #file, line: UInt = #line) {
     let invocations = object.verifyCount(method: method)
     XCTAssert(invocations.count == Int(count), "Expeced: \(count) invocations of `\(method)`, but was: \(invocations.count)", file: file, line: line)
 }
 
-func Given<T: FakeObject>(_ object: T, _ method: T.MethodType, willReturn response: Any?) {
+public func Given<T: FakeObject>(_ object: T, _ method: T.MethodType, willReturn response: Any?) {
     var mutableObject = object
     let responseInvocation: FakeInvocationResponse<T.MethodType, Any?> = FakeInvocationResponse(method: method, response: response, maxResponseInvocationsCount: .infinity, responseInvocationsCount: 0)
     mutableObject.mockInvocationRespons(responseInvocation)

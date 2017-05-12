@@ -1,5 +1,5 @@
 //
-//  DictionaryAssets.swift
+//  DictionaryAssertsTests.swift
 //  AzimoTestKit
 //
 //  Created by Mateusz Kuznik on 04/05/2017.
@@ -9,7 +9,7 @@
 import XCTest
 import AzimoTestKit
 
-class DictionaryAssets: XCTestCase {
+class DictionaryAssertsTests: XCTestCase {
 
     func testVerifyDictionaryContainsItemWithType() {
         let dictionary = ["test": "bla"]

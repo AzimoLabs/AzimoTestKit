@@ -9,35 +9,23 @@
 import Foundation
 import XCTest
 
-public extension Dictionary {
-    
-    func containsItem<T>(forKey key: Key, withType expectedType: T.Type , file: StaticString = #file, line: UInt = #line) {
-        let valueOptional = self[key]
-        guard let value = valueOptional else {
-            XCTFail("expected that \(self) will contain item with key: \(key)", file: file, line: line)
-            return
-        }
-        
-        guard let _ = value as? T else {
-            let valueMirror = Mirror(reflecting: value)
-            XCTFail("expected \(T.self) but was \(valueMirror.subjectType) - \(value)", file: file, line: line)
-            return
-        }
+
+public func Verify<T, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, ofType type: T.Type, file: StaticString = #file, line: UInt = #line) {
+    let valueOptional = dictionary[key]
+    guard let value = valueOptional else {
+        XCTFail("expected that \(dictionary) will contain item with key: \(key)", file: file, line: line)
+        return
     }
-    
-    func containsItem<T: Equatable>(forKey key: Key, equalTo expectedItem: T, file: StaticString = #file, line: UInt = #line) {
-        let valueOptional = self[key]
-        guard let value = valueOptional else {
-            XCTFail("expected that \(self) will contain item with key: \(key)", file: file, line: line)
-            return
-        }
-        
-        guard let castedValue = value as? T else {
-            let valueMirror = Mirror(reflecting: value)
-            XCTFail("expected \(T.self) but was \(valueMirror.subjectType) - \(value)", file: file, line: line)
-            return
-        }
-        
-        XCTAssertEqual(castedValue, expectedItem, file: file, line: line)
+
+    Verify(value, isTypeOf: type, file: file, line: line)
+}
+
+public func Verify<T:Equatable, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, equalTo expectedItem: T, file: StaticString = #file, line: UInt = #line) {
+    let valueOptional = dictionary[key]
+    guard let value = valueOptional else {
+        XCTFail("expected that \(dictionary) will contain item with key: \(key)", file: file, line: line)
+        return
     }
+
+    Verify(value, isEqualTo: expectedItem, file: file, line: line)
 }

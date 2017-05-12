@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		321FA4E0C079512E9952BD69 /* GeneralAsserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321FAE15345D73969C00DD33 /* GeneralAsserts.swift */; };
+		6163B4C11EC59594001FD4BA /* GeneralAssertsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163B4C01EC59594001FD4BA /* GeneralAssertsTest.swift */; };
 		6169FD781EBB8A3800A51557 /* DictionaryAsserts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169FD771EBB8A3800A51557 /* DictionaryAsserts.swift */; };
 		6169FD7C1EBB8ABA00A51557 /* DictionaryAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169FD7B1EBB8ABA00A51557 /* DictionaryAssets.swift */; };
 		616A0F511E9B9876007E977D /* AzimoTestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616A0F471E9B9875007E977D /* AzimoTestKit.framework */; };
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		321FAE15345D73969C00DD33 /* GeneralAsserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAsserts.swift; sourceTree = "<group>"; };
+		6163B4C01EC59594001FD4BA /* GeneralAssertsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAssertsTest.swift; sourceTree = "<group>"; };
 		6169FD771EBB8A3800A51557 /* DictionaryAsserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryAsserts.swift; sourceTree = "<group>"; };
 		6169FD7B1EBB8ABA00A51557 /* DictionaryAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryAssets.swift; sourceTree = "<group>"; };
 		616A0F471E9B9875007E977D /* AzimoTestKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AzimoTestKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +88,7 @@
 		616A0F541E9B9876007E977D /* AzimoTestKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				6163B4C01EC59594001FD4BA /* GeneralAssertsTest.swift */,
 				6169FD7B1EBB8ABA00A51557 /* DictionaryAssets.swift */,
 				616A0F571E9B9876007E977D /* Info.plist */,
 			);
@@ -104,6 +109,7 @@
 			children = (
 				616A0F721E9BA3A9007E977D /* FakeObject.swift */,
 				6169FD771EBB8A3800A51557 /* DictionaryAsserts.swift */,
+				321FAE15345D73969C00DD33 /* GeneralAsserts.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -223,6 +229,7 @@
 			files = (
 				616A0F731E9BA3A9007E977D /* FakeObject.swift in Sources */,
 				6169FD781EBB8A3800A51557 /* DictionaryAsserts.swift in Sources */,
+				321FA4E0C079512E9952BD69 /* GeneralAsserts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6163B4C11EC59594001FD4BA /* GeneralAssertsTest.swift in Sources */,
 				6169FD7C1EBB8ABA00A51557 /* DictionaryAssets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

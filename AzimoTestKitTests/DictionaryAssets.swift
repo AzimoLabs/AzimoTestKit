@@ -10,15 +10,15 @@ import XCTest
 import AzimoTestKit
 
 class DictionaryAssets: XCTestCase {
-    
-    func testDictionaryContainsItemWithType() {
+
+    func testVerifyDictionaryContainsItemWithType() {
         let dictionary = ["test": "bla"]
-        dictionary.containsItem(forKey: "test", withType: String.self)
+        Verify(dictionary, hasItemWithKey: "test", ofType: String.self)
     }
-    
-    func testDictionaryContainsItemEqualTo() {
+
+    func testVerifyDictionaryContainsItemEqualTo() {
         let dictionary = ["test": "bla"]
-        dictionary.containsItem(forKey: "test", equalTo: "bla")
+        Verify(dictionary, hasItemWithKey: "test", equalTo: "bla")
     }
     
 }

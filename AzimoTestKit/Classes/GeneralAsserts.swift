@@ -21,5 +21,5 @@ public func Verify<T:Equatable>(_ value: Any, isEqualTo expectedValue: T, file: 
         XCTFail("Expected \(mirrorExpectedValue.subjectType)(\(expectedValue)) but was \(mirrorValue.subjectType) (\(value))", file: file, line: line)
         return
     }
-    XCTAssertEqual(castedValue, expectedValue)
+    XCTAssertEqual(castedValue, expectedValue, file: file, line: line)
 }

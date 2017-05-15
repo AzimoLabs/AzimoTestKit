@@ -61,8 +61,18 @@ extension FakeObject {
         return invocations.filter { $0 == invocation }
     }
 
+    public func invocations(for method: MethodType, parameters: [String: Any] = [:]) -> [FakeInvocation<MethodType>] {
+        let invocation = createInvocation(method, parameters: parameters)
+        return invocations(for: invocation)
+    }
+
     public mutating func mockInvocationRespons(_ invocationResponse: FakeInvocationResponse<MethodType, Any?>) {
         invocationsToReturn.append(invocationResponse)
+    }
+
+    public mutating func mockInvocation(forMethod method: MethodType, withResponse response: Any?) {
+        let invocationResponse = FakeInvocationResponse<MethodType, Any?>(method: method, response: response)
+        mockInvocationRespons(invocationResponse)
     }
 
     public func createInvocation(_ invocation: MethodType, parameters: [String: Any] = [:]) -> FakeInvocation<MethodType> {

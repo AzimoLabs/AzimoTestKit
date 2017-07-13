@@ -80,41 +80,44 @@ extension FakeObject {
     }
 
     public func responseValue<T>(forInvocation invocation: FakeInvocation<MethodType>, defaultValue: T) -> T {
-        let invocationToReturnOptional = invocationsToReturn.filter { $0.method == invocation.method }.first
+        let invocationToReturnOptional = invocationsToReturn
+            .filter {
+                $0.method == invocation.method && canResponseBeUsed($0)
+            }
+            .first
         
         guard let invocationToReturn = invocationToReturnOptional else {
             return defaultValue
         }
 
-        switch invocationToReturn.maxResponseInvocationsCount {
-        case .infinity:
-            break
-        case let .max(count):
-            let performedInvocations = invocationToReturn.responseInvocationsCount
-            if count <= performedInvocations {
-                return defaultValue
-            }
-        }
-        
         invocationToReturn.responseInvocationsCount += 1
         return invocationToReturn.response as! T
     }
+    
+    private func canResponseBeUsed(_ invocation: FakeInvocationResponse<MethodType, Any?>) -> Bool {
+        switch invocation.maxResponseInvocationsCount {
+        case .infinity:
+            return true
+        case let .max(count):
+            let performedInvocations = invocation.responseInvocationsCount
+            if count <= performedInvocations {
+                return false
+            }
+            return true
+        }
+    }
 
     public func responseValue<T>(forInvocation invocation: FakeInvocation<MethodType>, defaultValue: T?) -> T? {
-        let invocationToReturnOptional = invocationsToReturn.filter { $0.method == invocation.method }.first
+        let invocationToReturnOptional = invocationsToReturn
+            .filter {
+                $0.method == invocation.method && canResponseBeUsed($0)
+            }
+            .first
 
         guard let invocationToReturn = invocationToReturnOptional else {
             return defaultValue
         }
-        switch invocationToReturn.maxResponseInvocationsCount {
-        case .infinity:
-            break
-        case let .max(count):
-            let performedInvocations = invocationToReturn.responseInvocationsCount
-            if count <= performedInvocations {
-                return defaultValue
-            }
-        }
+        
         invocationToReturn.responseInvocationsCount += 1
         guard let t = invocationToReturn.response as? T? else { return nil }
         return t

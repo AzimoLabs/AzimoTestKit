@@ -30,13 +30,13 @@ public func Verify<T:Equatable, Key, Value>(_ dictionary: [Key: Value], hasItemW
     Verify(value, isEqualTo: expectedItem, file: file, line: line)
 }
 
-public func Verify<Key:Hashable, Value:Equatable>(_ dictionary: [Key: Value], hasTheSameItemsAs expected: [Key: Value], file: StaticString = #file, line: UInt = #line) {
+public func Verify<Key, Value:Equatable>(_ dictionary: [Key: Value], hasTheSameItemsAs expected: [Key: Value], file: StaticString = #file, line: UInt = #line) {
     expected.forEach { (key: Key, value: Value) in
         Verify(dictionary, hasItemWithKey: key, equalTo: value, file: file, line: line)
     }
 }
 
-public func Verify<Key:Hashable, Value:Equatable>(_ anyObjectOptional: Any?, hasTheSameItemsAs expected: [Key: Value], file: StaticString = #file, line: UInt = #line) {
+public func Verify<Key, Value:Equatable>(_ anyObjectOptional: Any?, hasTheSameItemsAs expected: [Key: Value], file: StaticString = #file, line: UInt = #line) {
 
     guard let anyObject = anyObjectOptional else {
         XCTFail("Expected dictionary but was nil", file: file, line: line)

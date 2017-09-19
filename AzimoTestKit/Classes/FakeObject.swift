@@ -126,10 +126,19 @@ extension FakeObject {
 }
 
 extension FakeObject {
-    
     func verifyCount(method: MethodType) -> [FakeInvocation<MethodType>] {
         let invocation = FakeInvocation(method: method)
         return invocations(for: invocation)
+    }
+}
+
+extension FakeInvocation {
+    public func parameter<T>(forKey key: String, file: StaticString = #file, line: UInt = #line) -> T {
+        let parameterOptional = parameters[key] ?? nil
+        XCTAssertNotNil(parameterOptional, "Expected parameter for key: \(key) but was null", file: file, line: line)
+        let parameterAny = parameterOptional!
+        Verify(parameterAny, isTypeOf: T.self, file: file, line: line)
+        return parameterAny as! T
     }
 }
 

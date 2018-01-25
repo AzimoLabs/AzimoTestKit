@@ -16,6 +16,7 @@
 		616A0F731E9BA3A9007E977D /* FakeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616A0F721E9BA3A9007E977D /* FakeObject.swift */; };
 		61849AA31F70F48300EBDE41 /* FakeInvocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61849AA21F70F48300EBDE41 /* FakeInvocationTests.swift */; };
 		61AE89DC1FBF024A006D2040 /* StringError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE89DB1FBF024A006D2040 /* StringError.swift */; };
+		61D58D122019C49F00519A9D /* OptionalTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D58D112019C49F00519A9D /* OptionalTools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		616A0F721E9BA3A9007E977D /* FakeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeObject.swift; sourceTree = "<group>"; };
 		61849AA21F70F48300EBDE41 /* FakeInvocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeInvocationTests.swift; sourceTree = "<group>"; };
 		61AE89DB1FBF024A006D2040 /* StringError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringError.swift; sourceTree = "<group>"; };
+		61D58D112019C49F00519A9D /* OptionalTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionalTools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				6169FD771EBB8A3800A51557 /* DictionaryAsserts.swift */,
 				321FAE15345D73969C00DD33 /* GeneralAsserts.swift */,
 				61AE89DB1FBF024A006D2040 /* StringError.swift */,
+				61D58D112019C49F00519A9D /* OptionalTools.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D58D122019C49F00519A9D /* OptionalTools.swift in Sources */,
 				616A0F731E9BA3A9007E977D /* FakeObject.swift in Sources */,
 				61AE89DC1FBF024A006D2040 /* StringError.swift in Sources */,
 				6169FD781EBB8A3800A51557 /* DictionaryAsserts.swift in Sources */,

@@ -12,7 +12,7 @@ import XCTest
 extension Optional {
     
     //thanks for Bartosz Polaczyk 👏: https://www.slideshare.net/BartoszPolaczyk1/lets-meet-your-expectations
-    func unwraped(file: StaticString = #file, line: UInt = #line) throws -> Wrapped {
+    public func unwraped(file: StaticString = #file, line: UInt = #line) throws -> Wrapped {
         switch self {
         case .some(let wrappedValue):
             return wrappedValue

@@ -133,22 +133,39 @@ extension FakeObject {
 }
 
 extension FakeInvocation {
-    public func parameter<T>(forKey key: String, file: StaticString = #file, line: UInt = #line) -> T {
+    public func parameter<T>(forKey key: String, file: StaticString = #file, line: UInt = #line) throws -> T {
         let parameterOptional = parameters[key] ?? nil
         XCTAssertNotNil(parameterOptional, "Expected parameter for key: \(key) but was null", file: file, line: line)
         let parameterAny = parameterOptional!
-        Verify(parameterAny, isTypeOf: T.self, file: file, line: line)
+        try Verify(parameterAny, isTypeOf: T.self, file: file, line: line)
         return parameterAny as! T
     }
 }
 
-public func Verify<T: FakeObject>(_ object: T, _ method: T.MethodType, count: UInt = 1, file: StaticString = #file, line: UInt = #line) {
+public func Verify<T: FakeObject>(
+    _ object: T,
+    _ method: T.MethodType,
+    count: UInt = 1,
+    file: StaticString = #file,
+    line: UInt = #line) {
+    
     let invocations = object.verifyCount(method: method)
     XCTAssert(invocations.count == Int(count), "Expected: \(count) invocations of `\(method)`, but was: \(invocations.count)", file: file, line: line)
 }
 
-public func Given<T: FakeObject>(_ object: T, _ method: T.MethodType, willReturn response: Any?) {
+public func Given<T: FakeObject>(
+    _ object: T,
+    _ method: T.MethodType,
+    willReturn response: Any?,
+    times: MaxInvocationResponseCount = .infinity) {
+    
     var mutableObject = object
-    let responseInvocation: FakeInvocationResponse<T.MethodType, Any?> = FakeInvocationResponse(method: method, response: response, maxResponseInvocationsCount: .infinity, responseInvocationsCount: 0)
+    let responseInvocation: FakeInvocationResponse<T.MethodType, Any?>
+    responseInvocation = FakeInvocationResponse(
+        method: method,
+        response: response,
+        maxResponseInvocationsCount: times,
+        responseInvocationsCount: 0)
+    
     mutableObject.mockInvocationRespons(responseInvocation)
 }

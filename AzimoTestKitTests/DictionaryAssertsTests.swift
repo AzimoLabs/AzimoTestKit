@@ -11,19 +11,19 @@ import AzimoTestKit
 
 class DictionaryAssertsTests: XCTestCase {
 
-    func testVerifyDictionaryContainsItemWithType() {
+    func testVerifyDictionaryContainsItemWithType() throws {
         let dictionary = ["test": "bla"]
-        Verify(dictionary, hasItemWithKey: "test", ofType: String.self)
+        try Verify(dictionary, hasItemWithKey: "test", ofType: String.self)
     }
 
-    func testVerifyDictionaryContainsItemEqualTo() {
+    func testVerifyDictionaryContainsItemEqualTo() throws {
         let dictionary = ["test": "bla"]
-        Verify(dictionary, hasItemWithKey: "test", equalTo: "bla")
+        try Verify(dictionary, hasItemWithKey: "test", equalTo: "bla")
     }
 
-    func testThatVerifyHasTheSameItemsAs() {
+    func testThatVerifyHasTheSameItemsAs() throws {
 
-        let expectedDictionary: [String: AnyHashable] = [
+        let expectedDictionary: [String: String] = [
                 "key1": "value1",
                 "key2": "value2",
                 "key3": "value3",
@@ -35,7 +35,7 @@ class DictionaryAssertsTests: XCTestCase {
                 "key3": "value3",
         ]
 
-        Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
+        try Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
 
     }
 

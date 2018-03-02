@@ -12,10 +12,10 @@ import AzimoTestKit
 class GeneralAssertsTest: XCTestCase {
     
 
-    func testVerifyValueIsTypOf() {
+    func testVerifyValueIsTypOf() throws {
         let stringValue: Any = "Test String"
 
-        Verify(stringValue, isTypeOf: String.self)
+        try Verify(stringValue, isTypeOf: String.self)
     }
     
 }

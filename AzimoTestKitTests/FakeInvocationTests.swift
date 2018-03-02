@@ -11,12 +11,12 @@ import AzimoTestKit
 
 class FakeInvocationTests: XCTestCase {
     
-    func testThatParameterForKey_forExistingKey_willReturnThisKey() {
+    func testThatParameterForKey_forExistingKey_willReturnThisKey() throws {
         let parameterName = "paramenterName"
         let parameterValue = 20
         let sut = FakeInvocation(method: "testMethod", parameters: [parameterName: parameterValue])
         
-        let parametr: Int = sut.parameter(forKey: parameterName)
+        let parametr: Int = try sut.parameter(forKey: parameterName)
         
         XCTAssertEqual(parametr, parameterValue)
     }

@@ -17,5 +17,11 @@ class GeneralAssertsTest: XCTestCase {
 
         try Verify(stringValue, isTypeOf: String.self)
     }
+
+//    func testVerifyValueIsTypOf_forInvalidType_willFail() throws {
+//        let stringValue: Any = "Test String"
+//
+//        try Verify(stringValue, isTypeOf: Int.self)
+//    }
     
 }

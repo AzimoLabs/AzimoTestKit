@@ -17,8 +17,8 @@ extension Optional {
         case .some(let wrappedValue):
             return wrappedValue
         case .none:
-            let message = "Found unexpected nil value in \(#file), line: \(line)"
-            XCTFail(message, file:file, line:line)
+            let message = "Found unexpected nil value in \(file), line: \(line)"
+            XCTFail(message, file: file, line: line)
             throw message
         }
     }

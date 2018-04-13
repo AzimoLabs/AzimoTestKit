@@ -38,5 +38,41 @@ class DictionaryAssertsTests: XCTestCase {
         try Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
 
     }
+//
+//    func testThatVerifyHasTheSameItemsAs_forMissingKay_willThrow() throws {
+//
+//        let expectedDictionary: [String: String] = [
+//                "key1": "value1",
+//                "key2": "value2",
+//                "key3": "value3",
+//        ]
+//
+//        let dictionaryToValidate: Any? = [
+//                "key1": "value1",
+//                "key2": "value2",
+//        ]
+//
+//        try Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
+//
+//    }
+//
+//    func testThatVerifyHasTheSameItemsAs_forRedundantKay_willThrow() throws {
+//
+//        let expectedDictionary: [String: String] = [
+//                "key1": "value1",
+//                "key2": "value2",
+//                "key3": "value3",
+//        ]
+//
+//        let dictionaryToValidate: Any? = [
+//                "key1": "value1",
+//                "key2": "value2",
+//                "key3": "value3",
+//                "key4": "value4",
+//        ]
+//
+//        try Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
+//
+//    }
 
 }

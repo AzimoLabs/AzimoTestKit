@@ -21,13 +21,17 @@ class FakeInvocationTests: XCTestCase {
         XCTAssertEqual(parametr, parameterValue)
     }
     
-//    func testThatParameterForKey_forNonExistingKey_willFail() {
+//    func testThatParameterForKey_forNonExistingKey_willFail() throws {
 //        let parameterName = "paramenterName"
 //        let parameterValue = 20
 //        let sut = FakeInvocation(method: "testMethod", parameters: [parameterName: parameterValue])
 //
 //        continueAfterFailure = false
-//        let _: Int = sut.parameter(forKey: "_unexisting") //this is expected fail, test should pass
+//
+//        do {
+//            let unexpectedValue: Int = try sut.parameter(forKey: "_unexisting") 
+//            XCTFail("\(unexpectedValue) is unexpected. parameter(forKey:) should throw an error")
+//        } catch { }
 //    }
 //
 //    func testThatParameterForKey_forInvalidParameterType_willFall() {
@@ -36,7 +40,10 @@ class FakeInvocationTests: XCTestCase {
 //        let sut = FakeInvocation(method: "testMethod", parameters: [parameterName: parameterValue])
 //
 //        continueAfterFailure = false
-//        let _: String = sut.parameter(forKey: parameterName) //this is expected fail, test should pass
+//        do {
+//            let unexpectedValue: String = try sut.parameter(forKey: parameterName)
+//            XCTFail("\(unexpectedValue) is unexpected. parameter(forKey:) should throw an error")
+//        } catch { }
 //    }
-    
+//
 }

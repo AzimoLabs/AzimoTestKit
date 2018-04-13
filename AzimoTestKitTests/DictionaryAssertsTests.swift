@@ -11,14 +11,14 @@ import AzimoTestKit
 
 class DictionaryAssertsTests: XCTestCase {
 
-    func testVerifyDictionaryContainsItemWithType() throws {
+    func testVerifyDictionaryContainsItemWithType() {
         let dictionary = ["test": "bla"]
-        try Verify(dictionary, hasItemWithKey: "test", ofType: String.self)
+        Verify(dictionary, hasItemWithKey: "test", ofType: String.self)
     }
 
-    func testVerifyDictionaryContainsItemEqualTo() throws {
+    func testVerifyDictionaryContainsItemEqualTo() {
         let dictionary = ["test": "bla"]
-        try Verify(dictionary, hasItemWithKey: "test", equalTo: "bla")
+        Verify(dictionary, hasItemWithKey: "test", equalTo: "bla")
     }
 
     func testThatVerifyHasTheSameItemsAs() throws {

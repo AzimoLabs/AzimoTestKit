@@ -10,30 +10,35 @@ import Foundation
 import XCTest
 
 
-public func Verify<T, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, ofType type: T.Type, file: StaticString = #file, line: UInt = #line) throws {
+public func Verify<T, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, ofType type: T.Type, file: StaticString = #file, line: UInt = #line) {
     let valueOptional = dictionary[key]
     guard let value = valueOptional else {
         XCTFail("expected that \(dictionary) will contain item with key: \(key)", file: file, line: line)
         return
     }
 
-    try Verify(value, isTypeOf: type, file: file, line: line)
+    Verify(value, isTypeOf: type, file: file, line: line)
 }
 
-public func Verify<T:Equatable, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, equalTo expectedItem: T, file: StaticString = #file, line: UInt = #line) throws {
+public func Verify<T:Equatable, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, equalTo expectedItem: T, file: StaticString = #file, line: UInt = #line) {
     let valueOptional = dictionary[key]
     guard let value = valueOptional else {
         XCTFail("expected that \(dictionary) will contain item with key: \(key)", file: file, line: line)
         return
     }
 
-    try Verify(value, isEqualTo: expectedItem, file: file, line: line)
+    Verify(value, isEqualTo: expectedItem, file: file, line: line)
 }
 
-public func Verify<Key, Value:Equatable>(_ dictionary: [Key: Value], hasTheSameItemsAs expected: [Key: Value], file: StaticString = #file, line: UInt = #line) throws {
+public func Verify<Key, Value:Equatable>(_ dictionary: [Key: Value], hasTheSameItemsAs expected: [Key: Value], file: StaticString = #file, line: UInt = #line) {
     
-    try Perform(onExpected: expected) { ( expectedKey, expectedValue) throws in
-        try Verify(dictionary, hasItemWithKey: expectedKey, equalTo: expectedValue, file: file, line: line)
+    do {
+        try Perform(onExpected: expected) { ( expectedKey, expectedValue) throws in
+            Verify(dictionary, hasItemWithKey: expectedKey, equalTo: expectedValue, file: file, line: line)
+        }
+    } catch {
+        XCTFail("\(error)")
+        return
     }
 }
 
@@ -75,7 +80,7 @@ public func Verify<Key, Value:Equatable>(_ anyObjectOptional: Any?, hasTheSameIt
 
     if anyDictionary.count == expected.count {
         try Perform(onExpected: expected) { ( expectedKey, expectedValue) throws in
-            try Verify(anyDictionary, hasItemWithKey: expectedKey, equalTo: expectedValue, file: file, line: line)
+            Verify(anyDictionary, hasItemWithKey: expectedKey, equalTo: expectedValue, file: file, line: line)
         }
     } else {
         let valueKeys = Set(anyDictionary.keys)

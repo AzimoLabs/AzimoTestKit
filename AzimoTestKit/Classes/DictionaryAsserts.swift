@@ -64,7 +64,7 @@ private func Perform<Key, Value:Equatable>(
     }
 }
 
-public func Verify<Key, Value:Equatable>(_ anyObjectOptional: Any?, hasTheSameItemsAs expected: [Key: Value], file: StaticString = #file, line: UInt = #line) throws {
+public func Verify<Key, Value:Equatable>(_ anyObjectOptional: Any?, hasTheSameItemsAs expected: [Key: Value], file: StaticString = #file, line: UInt = #line) {
 
     guard let anyObject = anyObjectOptional else {
         XCTFail("Expected dictionary but was nil", file: file, line: line)
@@ -79,8 +79,13 @@ public func Verify<Key, Value:Equatable>(_ anyObjectOptional: Any?, hasTheSameIt
     }
 
     if anyDictionary.count == expected.count {
-        try Perform(onExpected: expected) { ( expectedKey, expectedValue) throws in
-            Verify(anyDictionary, hasItemWithKey: expectedKey, equalTo: expectedValue, file: file, line: line)
+        do {
+            try Perform(onExpected: expected) { ( expectedKey, expectedValue) throws in
+                Verify(anyDictionary, hasItemWithKey: expectedKey, equalTo: expectedValue, file: file, line: line)
+            }
+        } catch {
+            XCTFail("\(error)")
+            return
         }
     } else {
         let valueKeys = Set(anyDictionary.keys)

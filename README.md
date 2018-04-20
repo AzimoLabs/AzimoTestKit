@@ -1,35 +1,36 @@
 # AzimoTestKit
 
-AzimoTestKit is framework which support writing tests.
+AzimoTestKit is a framework which supports writing tests.
 
 ### Why
 
-First of all, Swift has limited support for reflection which prevent us from automatically creation Mock objects. Additionally in Azimo we believe that tests are really important and unit tests should be part of development. Us we know that writing unit tests with out mock is really hard (or sometimes impossible) we started writing them for each test class. Quickly we realize that we need some standardized interface for it.
+First of all, Swift has limited support for reflection which prevents us from automatically creation Mock objects. Additionally, in Azimo we believe that tests are really important and unit tests should be part of development. As we know that writing unit tests without mock is really hard (or sometimes impossible) we started writing them for each test class. Quickly we realize that we need some standardized interface for it.
 
 ### Main functionality
 
-`FakeObject` is a protocol containing two properties. One is `invocations` which is an array of all invocations performed on this object. Other is `invocationsToReturn` which also is an array but this time it store response which should be return when someone will call particular function.
+`FakeObject` is a protocol containing two properties. One is `invocations` which is an array of all invocations performed on this object. Other is `invocationsToReturn` which also is an array but this time it stores response which should be returned when someone will call a particular function.
 
-That's it. Now we just need to fit those properties with expected data and use to validate our tests. Additional to `FakeObject` protocol `AzimoTestKit` provide an `extension` to this protocol with helpers methods as: `createInvocation`, `verify` and others.  
+That's it. Now we just need to fit those properties with expected data and use to validate our tests. Additional to `FakeObject` protocol `AzimoTestKit` provide an `extension` to it with helpers methods as: `createInvocation`, `verify` and others.  
 
 
 ### Additional functionality
 
 `AzimoTestKit` also gave us some validations tools as:
 
-For verifying type
+For verifying type:
 
     func Verify<T>(_ value: Any, isTypeOf expectedType: T.Type)
     func Verify<T: Equatable>(_ value: Any, isEqualTo expectedValue: T)
     func VerifyAndCast<T>(_ value: Any, isTypeOf expectedType: T.Type) throws -> T
 
-or for dictionary
+for dictionary:
 
     func Verify<T, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, ofType type: T.Type)
     func Verify<T:Equatable, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, equalTo expectedItem: T)
     func Verify<Key, Value:Equatable>(_ dictionary: [Key: Value], hasTheSameItemsAs expected: [Key: Value])
 
-or for Optional (thanks for Bartosz Polaczyk 👏: [more](https://www.slideshare.net/BartoszPolaczyk1/lets-meet-your-expectations))
+or for Optional (thanks to Bartosz Polaczyk 👏:
+ [more](https://www.slideshare.net/BartoszPolaczyk1/lets-meet-your-expectations))
 
     func unwraped(file: StaticString = #file, line: UInt = #line) throws -> Wrapped
 
@@ -59,10 +60,10 @@ And we use it in class `PrintersController`
       }
     }
 
-If we want to test `print()` function we should provide fake object of `Printer`. Unfortunately, we can not create it automatically in code using reflection so we have to write them ourselves (or by using some code generator frameworks).
+If we want to test `print()` function we should provide fake object of `Printer`. Unfortunately, we can not create it automatically in code using reflection so we have to write them ourselves (or using some codes generator frameworks).
 
-First lets create some helpers: `PrinterMethods` and `PrinterMethodsProperties`.
-For this case we use `enum`s but you can use whatever you want.
+First let's create some helpers: `PrinterMethods` and `PrinterMethodsProperties`.
+In this case, we use `enum`s but you can use whatever you want.
 
     enum PrinterMethods {
         case getIdentifier
@@ -73,7 +74,7 @@ For this case we use `enum`s but you can use whatever you want.
          case message
     }
 
-Now lets create our `FakeObject`
+Now let's create our `FakeObject``
 
     class FakePrinter: Printer, FakeObject {
 
@@ -88,9 +89,9 @@ Now lets create our `FakeObject`
          return responseValue(forInvocation: invocation, defaultValue: "some default value")
       }
 
-      func print() {
+      func print(_ message: String) {
         let parameters = [
-           PrinterMethodsProperties.message.rawValue: text
+           PrinterMethodsProperties.message.rawValue: message
         ]
         let invocation = createInvocation(.print, parameters: parameters)
         invocations.append(invocation)
@@ -98,7 +99,7 @@ Now lets create our `FakeObject`
     }
 
 
-Now let use it in test
+Now let's use it in test
 
     class PrintersControllerTests: XCTestCase {
 

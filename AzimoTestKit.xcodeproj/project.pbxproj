@@ -31,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		321FAE15345D73969C00DD33 /* GeneralAsserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAsserts.swift; sourceTree = "<group>"; };
+		6151DEA7208A051C009DD4A1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		6163B4C01EC59594001FD4BA /* GeneralAssertsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAssertsTest.swift; sourceTree = "<group>"; };
 		6169FD771EBB8A3800A51557 /* DictionaryAsserts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryAsserts.swift; sourceTree = "<group>"; };
 		6169FD7B1EBB8ABA00A51557 /* DictionaryAssertsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryAssertsTests.swift; sourceTree = "<group>"; };
@@ -105,6 +106,7 @@
 		616A0F611E9B989B007E977D /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				6151DEA7208A051C009DD4A1 /* README.md */,
 				616A0F621E9B989B007E977D /* AzimoTestKit.h */,
 				616A0F631E9B989B007E977D /* Info.plist */,
 			);

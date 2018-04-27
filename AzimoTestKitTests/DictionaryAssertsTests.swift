@@ -21,7 +21,7 @@ class DictionaryAssertsTests: XCTestCase {
         Verify(dictionary, hasItemWithKey: "test", equalTo: "bla")
     }
 
-    func testThatVerifyHasTheSameItemsAs() throws {
+    func testThatVerifyHasTheSameItemsAs() {
 
         let expectedDictionary: [String: String] = [
                 "key1": "value1",
@@ -35,7 +35,7 @@ class DictionaryAssertsTests: XCTestCase {
                 "key3": "value3",
         ]
 
-        try Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
+        Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
 
     }
 //
@@ -52,7 +52,7 @@ class DictionaryAssertsTests: XCTestCase {
 //                "key2": "value2",
 //        ]
 //
-//        try Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
+//        Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
 //
 //    }
 //
@@ -71,7 +71,7 @@ class DictionaryAssertsTests: XCTestCase {
 //                "key4": "value4",
 //        ]
 //
-//        try Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
+//        Verify(dictionaryToValidate, hasTheSameItemsAs: expectedDictionary)
 //
 //    }
 

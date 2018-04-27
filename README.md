@@ -32,7 +32,7 @@ for dictionary:
 or for Optional (thanks to Bartosz Polaczyk 👏:
  [more](https://www.slideshare.net/BartoszPolaczyk1/lets-meet-your-expectations))
 
-    func unwraped(file: StaticString = #file, line: UInt = #line) throws -> Wrapped
+    func unwrapped(file: StaticString = #file, line: UInt = #line) throws -> Wrapped
 
 ### Example of use
 

@@ -134,8 +134,8 @@ extension FakeObject {
 
 extension FakeInvocation {
     public func parameter<T>(forKey key: String, file: StaticString = #file, line: UInt = #line) throws -> T {
-        let parameterOptional = try parameters[key].unwraped(file: file, line: line)
-        let parameterAny = try parameterOptional.unwraped(file: file, line: line)
+        let parameterOptional = try parameters[key].unwrapped(file: file, line: line)
+        let parameterAny = try parameterOptional.unwrapped(file: file, line: line)
         return try VerifyAndCast(parameterAny, isTypeOf: T.self, file: file, line: line)
     }
 }

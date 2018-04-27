@@ -1,49 +1,50 @@
 # AzimoTestKit
 
-AzimoTestKit is a framework which supports writing tests.
+AzimoTestKit is a framework which supports writing unit tests.
 
 ### Why
-
-First of all, Swift has limited support for reflection which prevents us from automatically creation Mock objects. Additionally, in Azimo we believe that tests are really important and unit tests should be part of development. As we know that writing unit tests without mock is really hard (or sometimes impossible) we started writing them for each test class. Quickly we realize that we need some standardized interface for it.
+In Azimo we believe that software automatic testing is essential and unit tests should be a part of development work.
+Unfortunately Swift has limited support for reflection what prevents us from effective Mock objects creation. Writing unit tests without mocks is really hard (sometimes impossible), that's why we started writing them for each test class. While doing it, we quickly realized that It doesn't go without having standarized interface for it. And this was the reason why we created `AzimoTestKit`.
 
 ### Main functionality
 
-`FakeObject` is a protocol containing two properties. One is `invocations` which is an array of all invocations performed on this object. Other is `invocationsToReturn` which also is an array but this time it stores response which should be returned when someone will call a particular function.
+`FakeObject` is a protocol containing two properties:
+* `invocations` - an array of all invocations performed on this object. 
+* `invocationsToReturn` - an array that stores response which should be returned when someone will call a particular function.
 
-That's it. Now we just need to fit those properties with expected data and use to validate our tests. Additional to `FakeObject` protocol `AzimoTestKit` provide an `extension` to it with helpers methods as: `createInvocation`, `verify` and others.  
-
+That's it. Now we just need to fit those properties with expected data and use to validate our tests. In addition to `FakeObject` protocol, `AzimoTestKit` provides an `extension` to it with helpers methods as: `createInvocation`, `verify` and others.  
 
 ### Additional functionality
 
-`AzimoTestKit` also gave us some validations tools as:
+`AzimoTestKit` also gives us some validations tools like:
 
-For verifying type:
+Type verification:
 
     func Verify<T>(_ value: Any, isTypeOf expectedType: T.Type)
     func Verify<T: Equatable>(_ value: Any, isEqualTo expectedValue: T)
     func VerifyAndCast<T>(_ value: Any, isTypeOf expectedType: T.Type) throws -> T
 
-for dictionary:
+Dictionary verification:
 
     func Verify<T, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, ofType type: T.Type)
     func Verify<T:Equatable, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, equalTo expectedItem: T)
     func Verify<Key, Value:Equatable>(_ dictionary: [Key: Value], hasTheSameItemsAs expected: [Key: Value])
 
-or for Optional (thanks to Bartosz Polaczyk 👏:
+Optionals verification (thanks to Bartosz Polaczyk 👏:
  [more](https://www.slideshare.net/BartoszPolaczyk1/lets-meet-your-expectations))
 
     func unwraped(file: StaticString = #file, line: UInt = #line) throws -> Wrapped
 
-### Example of use
+### Example
 
-Let say we have some protocol called `Printer`:
+Let say we have the protocol called `Printer`:
 
     protocol Printer {
         func getIdentifier() -> String
         func print(_ message: String)
     }
 
-And we use it in class `PrintersController`
+And we use it in the class `PrintersController`
 
     class PrintersController {
 
@@ -60,7 +61,7 @@ And we use it in class `PrintersController`
       }
     }
 
-If we want to test `print()` function we should provide fake object of `Printer`. Unfortunately, we can not create it automatically in code using reflection so we have to write them ourselves (or using some codes generator frameworks).
+If we want to test `print()` function we should provide fake object of `Printer`. Unfortunately, we cannot create it automatically in code using reflection so we have to write them ourselves (or using some codes generator frameworks).
 
 First let's create some helpers: `PrinterMethods` and `PrinterMethodsProperties`.
 In this case, we use `enum`s but you can use whatever you want.

@@ -19,33 +19,34 @@ That's it. Now we just need to fit those properties with expected data and use t
 `AzimoTestKit` also gives us some validations tools like:
 
 Type verification:
-
+```swift
     func Verify<T>(_ value: Any, isTypeOf expectedType: T.Type)
     func Verify<T: Equatable>(_ value: Any, isEqualTo expectedValue: T)
     func VerifyAndCast<T>(_ value: Any, isTypeOf expectedType: T.Type) throws -> T
-
+```
 Dictionary verification:
-
+```swift
     func Verify<T, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, ofType type: T.Type)
     func Verify<T:Equatable, Key, Value>(_ dictionary: [Key: Value], hasItemWithKey key: Key, equalTo expectedItem: T)
     func Verify<Key, Value:Equatable>(_ dictionary: [Key: Value], hasTheSameItemsAs expected: [Key: Value])
-
+```
 Optionals verification (thanks to Bartosz Polaczyk 👏:
  [more](https://www.slideshare.net/BartoszPolaczyk1/lets-meet-your-expectations))
-
+ 
+```swift
     func unwrapped(file: StaticString = #file, line: UInt = #line) throws -> Wrapped
-
+```
 ### Example
 
 Let say we have the protocol called `Printer`:
-
+```swift
     protocol Printer {
         func getIdentifier() -> String
         func print(_ message: String)
     }
-
+```
 And we use it in the class `PrintersController`
-
+```swift
     class PrintersController {
 
       private let printers: [Printer]
@@ -60,12 +61,12 @@ And we use it in the class `PrintersController`
         printer.print(message)
       }
     }
-
+```
 If we want to test `print()` function we should provide fake object of `Printer`. Unfortunately, we cannot create it automatically in code using reflection so we have to write them ourselves (or using some codes generator frameworks).
 
 First let's create some helpers: `PrinterMethods` and `PrinterMethodsProperties`.
 In this case, we use `enum`s but you can use whatever you want.
-
+```swift
     enum PrinterMethods {
         case getIdentifier
         case print
@@ -74,9 +75,9 @@ In this case, we use `enum`s but you can use whatever you want.
     enum PrinterMethodsProperties {
          case message
     }
-
+```
 Now let's create our `FakeObject``
-
+```swift
     class FakePrinter: Printer, FakeObject {
 
       typealias MethodType = PrinterMethods
@@ -98,10 +99,10 @@ Now let's create our `FakeObject``
         invocations.append(invocation)
       }
     }
-
+```
 
 Now let's use it in test
-
+```swift
     class PrintersControllerTests: XCTestCase {
 
         var sut: PrintersController!
@@ -124,3 +125,4 @@ Now let's use it in test
         }
 
     }
+```

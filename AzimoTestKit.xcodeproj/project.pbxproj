@@ -201,10 +201,9 @@
 			};
 			buildConfigurationList = 616A0F411E9B9875007E977D /* Build configuration list for PBXProject "AzimoTestKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = 616A0F3D1E9B9875007E977D;
